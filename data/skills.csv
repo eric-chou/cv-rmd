@@ -1,19 +1,19 @@
-group	skill
-Programming	R
-Programming	Python
-Programming	Java
-Programming	SQL
-Programming	SAS
-Programming	Stata
-Programming	Java
-Programming	JavaScript
-Data Visualization	R Shiny
-Data Visualization	RMarkdown
-Data Visualization	Power BI
-Data Visualization	Tableau
-Data Visualization	Jupyter
-Data Visualization	ArcGIS
-Software	Git
-Software	Node.js
-Software	AWS
-Software	Docker
+group,skill
+Programming,R
+Programming,Python
+Programming,Java
+Programming,SQL
+Programming,SAS
+Programming,Stata
+Programming,Java
+Programming,JavaScript
+Data Visualization,R Shiny
+Data Visualization,RMarkdown
+Data Visualization,Power BI
+Data Visualization,Tableau
+Data Visualization,Jupyter
+Data Visualization,ArcGIS
+Software,Git
+Software,Node.js
+Software,AWS
+Software,Docker

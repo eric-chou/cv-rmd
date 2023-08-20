@@ -1,6 +1,6 @@
-job_id,begin,end,position,employer,department
-1,1/7/13,5/3/13,Undergraduate Research Assistant,University of Pittsburgh,Department of Psychiatry
-2,1/5/13,9/22/17,Research Analyst,University of Pittsburgh,Department of Biomedical Informatics
-3,9/25/17,8/14/20,Systems Programmer,University of Pittsburgh,Department of Biomedical Informatics
-4,9/14/20,5/6/22,Data Analyst,Emory University,School of Medicine
-5,5/23/22,,Data Quality Analyst,Metro Atlanta Rapid Transit Authority (MARTA),Department of Research & Analysis
+job_id,begin,end,position,employer,department,city,region,country,supervisor
+1,1/7/13,5/3/13,Undergraduate Research Assistant,University of Pittsburgh,Department of Psychiatry,Pittsburgh,Pennsylvania,USA,"J. Richard Jennings, PhD"
+2,1/5/15,9/22/17,Research Analyst,University of Pittsburgh,Department of Biomedical Informatics,Pittsburgh,Pennsylvania,USA,"Richard Boyce, PhD"
+3,9/25/17,8/14/20,Systems Programmer,University of Pittsburgh,Department of Biomedical Informatics,Pittsburgh,Pennsylvania,USA,"Richard Boyce, PhD"
+4,9/14/20,5/6/22,Data Analyst,Emory University,School of Medicine,Atlanta,Georgia,USA,"Nitya Bakshi, MD, MS"
+5,5/23/22,,Data Quality Analyst,Metro Atlanta Rapid Transit Authority (MARTA),Department of Research & Analysis,Atlanta,Georgia,USA,
