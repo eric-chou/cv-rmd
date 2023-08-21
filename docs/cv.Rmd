@@ -1,0 +1,151 @@
+---
+name: Eric
+surname: Chou
+position: "Data Quality Analyst"
+address: "Atlanta, Georgia"
+# profilepic: "./img/me.jpg"
+phone: 937 750 3516
+email: "echou53@gmail.com"
+github: eric-chou
+linkedin: chou-eric
+# orcid: 0000-0003-0500-9269
+date: "`r format(Sys.time(), '%B %Y')`"
+headcolor: 414141
+docname: CV
+output: vitae::awesomecv
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include=F}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+
+
+packages <- c('vitae'     # The CV's LaTeX Template
+             ,'tibble'    # Data sctructure for tribbles
+             ,'magrittr'  # The Pipe %>%
+             ,'here'      # Relative Filepaths
+             ,'readr'     # Data Loading
+             ,'tidyverse' # Needed for bind_rows and whatever
+             ,'scholar'   # Updating publications from google scholar
+             ,'kableExtra'# Adding technicalskills table
+             ,'glue'
+             ,'rlang'
+             ,'lubridate'
+            )
+library(magrittr)
+# Install packages not yet installed
+# installed_packages <- packages %in% rownames(installed.packages())
+# if (any(installed_packages == FALSE)) {
+#   install.packages(packages[!installed_packages])
+# }
+
+# Packages loading
+lapply(packages, library, character.only = TRUE) %>%
+  invisible()
+```
+
+```{r loadData}
+# Education
+education <- read_csv("../data/education.csv") %>%
+  mutate(
+    begin = as.Date(begin, format=("%m/%d/%y")),
+    end = as.Date(end, format=("%m/%d/%y"))
+  )
+
+education.desc <- read_csv("../data/education_descriptions.csv")
+
+# Jobs
+job.titles <- read_csv("../data/job_titles.csv") %>%
+  mutate(
+    begin = as.Date(begin, format=("%m/%d/%y")),
+    end = as.Date(end, format=("%m/%d/%y"))
+  )
+
+job.desc <- read_csv("../data/job_descriptions.csv")
+
+# Skills
+skills <- read_csv("../data/skills.csv")
+```
+
+# Education
+
+```{r education, results="asis"}
+# merge with descriptions
+education %>%
+  left_join(
+    education.desc,
+    by=c("degree")
+  ) %>%
+  arrange(desc(end)) %>%
+  # format as detailed entries 
+  detailed_entries(
+    what=degree,
+    # when=year(end),
+    with=university,
+    why=accomplishments
+  )
+```
+
+# Experience
+
+```{r experience}
+job.titles %>% 
+  # filter out early career
+  arrange(desc(begin)) %>% 
+  filter(year(begin) >= 2015) %>%
+  # Join job descriptions
+  left_join(job.desc) %>% 
+  # Arrange by descending begin date
+  arrange(desc(begin), desc_id) %>% 
+  # Format as detailed entries
+  detailed_entries(
+    what = position,
+    when = as.character(
+      glue("{month(begin, label = TRUE, abbr = TRUE)} {year(begin)} - 
+           {if_else(!is.na(end), 
+           paste(month(end, label = TRUE, abbr = TRUE), year(end)), 'present')}")),
+    with = employer,
+    where = glue("{city}, {region}, {country}"),
+    why = accomplishments)
+```
+
+# Skills
+
+```{r}
+skills_formatted <- skills %>% 
+  group_by(group) %>% 
+  summarize(skills = glue_collapse(skill, sep = " $\\bullet$ "))
+```
+
+```{r, results='asis', width=40000}
+for (group in skills_formatted$group) {
+  cat(
+    glue("\\textbf{<<tools::toTitleCase(group)>>}:", .open = "<<", .close = ">>"),
+    filter(skills_formatted, group == !!group)$skills,
+    "\n\n\n"
+  )
+}
+```
+
+
+# Select Publications
+
+```{r publications}
+publications <- bibliography_entries("../data/publications.bib") %>% arrange(desc(issued))
+
+# select publications - try to keep to 4
+publications %>%
+  filter(
+    id %in% c(
+      'bakshi2023multimodal',
+      'villa2022qtc',
+      'chou2021designing',
+      'birer2020new'
+    )
+  )
+```
+
+Full list of `r publications %>% summarize(N = n()) %>% pull(N)` publications: https://scholar.google.com/citations?user=gqYynN8AAAAJ&hl=en
