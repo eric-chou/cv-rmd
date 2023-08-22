@@ -93,9 +93,7 @@ education %>%
 
 ```{r experience}
 job.titles %>% 
-  # filter out early career
   arrange(desc(begin)) %>% 
-  filter(year(begin) >= 2015) %>%
   # Join job descriptions
   left_join(job.desc) %>% 
   # Arrange by descending begin date
@@ -139,16 +137,7 @@ for (group in skills_formatted$group) {
 ```{r publications}
 publications <- bibliography_entries("../data/publications.bib") %>% arrange(desc(issued))
 
-# select publications - try to keep to 4
-publications %>%
-  filter(
-    id %in% c(
-      'bakshi2023multimodal',
-      'villa2022qtc',
-      'chou2021designing',
-      'birer2020new'
-    )
-  )
+publications
 ```
 
 Full list of `r publications %>% summarize(N = n()) %>% pull(N)` publications: https://scholar.google.com/citations?user=gqYynN8AAAAJ&hl=en
