@@ -1,19 +1,19 @@
-group,skill
-Programming,R
-Programming,Python
-Programming,Java
-Programming,SQL
-Programming,SAS
-Programming,Stata
-Programming,Java
-Programming,JavaScript
-Data Visualization,R Shiny
-Data Visualization,RMarkdown
-Data Visualization,Power BI
-Data Visualization,Tableau
-Data Visualization,Jupyter
-Data Visualization,ArcGIS
-Software,Git
-Software,Node.js
-Software,AWS
-Software,Docker
+group_id,group,skill_sort,skill
+1,Programming,1,R
+1,Programming,2,Python
+1,Programming,3,Java
+1,Programming,4,SQL
+1,Programming,5,SAS
+1,Programming,6,Stata
+1,Programming,7,Java
+1,Programming,8,JavaScript
+2,Data Visualization,1,Shiny
+2,Data Visualization,2,Power BI
+2,Data Visualization,3,Tableau
+2,Data Visualization,4,Rmarkdown
+2,Data Visualization,5,Jupyter
+2,Data Visualization,6,ArcGIS
+3,Software,1,Git
+3,Software,2,AWS
+3,Software,3,Docker
+3,Software,4,Node.js
