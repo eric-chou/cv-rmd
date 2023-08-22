@@ -6,9 +6,9 @@ address: "Atlanta, Georgia"
 # profilepic: "./img/me.jpg"
 phone: 937 750 3516
 email: "echou53@gmail.com"
+www: "eric-chou.github.io"
 github: eric-chou
 linkedin: chou-eric
-# orcid: 0000-0003-0500-9269
 date: "`r format(Sys.time(), '%B %Y')`"
 headcolor: 414141
 docname: CV
@@ -116,8 +116,11 @@ job.titles %>%
 
 ```{r}
 skills_formatted <- skills %>% 
-  group_by(group) %>% 
-  summarize(skills = glue_collapse(skill, sep = " $\\bullet$ "))
+  group_by(group_id, group) %>% 
+  summarize(skills = glue_collapse(skill, sep = " $\\bullet$ ")) %>%
+  arrange(group_id) %>%
+  ungroup() %>%
+  select(group, skills)
 ```
 
 ```{r, results='asis', width=40000}
