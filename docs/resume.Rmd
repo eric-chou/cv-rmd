@@ -48,26 +48,28 @@ lapply(packages, library, character.only = TRUE) %>%
 ```
 
 ```{r loadData}
+in_path = "../data/"
+
 # Education
-education <- read_csv("../data/education.csv") %>%
+education <- read_csv(paste0(in_path,"education.csv")) %>%
   mutate(
     begin = as.Date(begin, format=("%m/%d/%y")),
     end = as.Date(end, format=("%m/%d/%y"))
   )
 
-education.desc <- read_csv("../data/education_descriptions.csv")
+education.desc <- read_csv(paste0(in_path,"education_descriptions.csv"))
 
 # Jobs
-job.titles <- read_csv("../data/job_titles.csv") %>%
+job.titles <- read_csv(paste0(in_path,"job_titles.csv")) %>%
   mutate(
     begin = as.Date(begin, format=("%m/%d/%y")),
     end = as.Date(end, format=("%m/%d/%y"))
   )
 
-job.desc <- read_csv("../data/job_descriptions.csv")
+job.desc <- read_csv(paste0(in_path,"job_descriptions.csv"))
 
 # Skills
-skills <- read_csv("../data/skills.csv")
+skills <- read_csv(paste0(in_path,"skills.csv"))
 ```
 
 # Education
