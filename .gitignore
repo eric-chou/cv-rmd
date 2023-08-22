@@ -1,7 +1,7 @@
 .RData
 .Rhistory
-data/fonts/*
-data/media/*
-data/*.sty
-data/*.cls
-data/mariecurie.jpg
+docs/fonts/
+docs/media/
+*.sty
+*.cls
+docs/mariecurie.jpg
