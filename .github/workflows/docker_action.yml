@@ -27,13 +27,12 @@ jobs:
        run: |
          Rscript -e "print(getwd())"
          Rscript -e "rmarkdown::render(input = file.path(getwd(), 'docs', 'cv.Rmd'), params = list(work_dir = getwd()))"
-         Rscript -e "rmarkdown::render(input = file.path(getwd(), 'docs', 'resume_template.Rmd'), params = list(work_dir = getwd()))"
      - name: Commit files
        run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add --all
-          git commit -am "update the cv.pdf & resume_template.pdf files in the 'docs' directory of the repository"
+          git commit -am "update cv.pdf in the 'docs' directory of the repository"
           git push
      - name: Upload pdf file
        uses: actions/upload-artifact@v1
