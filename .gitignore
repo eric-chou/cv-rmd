@@ -5,5 +5,5 @@ docs/media/
 *.sty
 *.cls
 docs/mariecurie.jpg
-docs/specific/
-data/specific/
+docs/tailored/
+data/tailored/
