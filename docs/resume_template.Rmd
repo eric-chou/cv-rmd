@@ -103,7 +103,7 @@ job.desc.filtered <- job.desc %>%
       job_id == 1 ~ F,
       job_id == 2 ~ F,
       job_id == 3 & desc_id %in% c(3) ~ F,
-      job_id == 4 & desc_id %in% c(2) ~ F,
+      job_id == 4 & desc_id %in% c(NA) ~ F,
       job_id == 5 & desc_id %in% c(5) ~ F,
       .default = T
     )
@@ -116,6 +116,10 @@ job.titles.filtered %>%
   left_join(job.desc.filtered) %>% 
   # Arrange by descending begin date
   arrange(desc(begin), desc_id) %>% 
+  # include department if applicable 
+  mutate(
+    employer = ifelse(!is.na(department), paste(employer, department, sep=", "), employer)
+  ) %>%
   # Format as detailed entries
   detailed_entries(
     what = position,
@@ -153,7 +157,7 @@ for (group in skills_formatted$group) {
 # Select Publications
 
 ```{r publications}
-publications <- bibliography_entries("../data/publications.bib") %>% arrange(desc(issued))
+publications <- bibliography_entries(paste0(in_path,"publications.bib")) %>% arrange(desc(issued))
 
 # try to limit to 3
 publications %>%
