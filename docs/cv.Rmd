@@ -87,6 +87,7 @@ education %>%
     what=degree,
     # when=year(end),
     with=university,
+    where = glue("{city}, {region}, {country}"),
     why=accomplishments
   )
 ```
@@ -96,6 +97,7 @@ education %>%
 ```{r experience}
 job.titles %>% 
   arrange(desc(begin)) %>% 
+  filter(job_id > 1) %>%
   # Join job descriptions
   left_join(job.desc) %>% 
   # Arrange by descending begin date

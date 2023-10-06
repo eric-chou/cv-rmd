@@ -93,7 +93,7 @@ education %>%
 ```{r experience}
 # exclude old jobs
 job.titles.filtered <- job.titles %>%
-  filter(job_id > 2)
+  filter(job_id > 1)
 
 # cut down on select bullet points
 job.desc.filtered <- job.desc %>%
@@ -101,10 +101,9 @@ job.desc.filtered <- job.desc %>%
   mutate(
     include = case_when(
       job_id == 1 ~ F,
-      job_id == 2 ~ F,
-      job_id == 3 & desc_id %in% c(3) ~ F,
-      job_id == 4 & desc_id %in% c(NA) ~ F,
-      job_id == 5 & desc_id %in% c(5) ~ F,
+      job_id == 2 & desc_id %in% c(1,4) ~ F,
+      job_id == 3 & desc_id %in% c(NA) ~ F,
+      job_id == 4 & desc_id %in% c(5) ~ F,
       .default = T
     )
   ) %>%
