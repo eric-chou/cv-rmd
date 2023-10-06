@@ -84,6 +84,7 @@ education %>%
     what=degree,
     # when=year(end),
     with=university,
+    where = glue("{city}, {region}, {country}"),
     # why=accomplishments
   )
 ```
