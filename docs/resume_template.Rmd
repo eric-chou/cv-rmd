@@ -1,7 +1,7 @@
 ---
 name: Eric
 surname: Chou
-position: "Data Quality Analyst"
+position: "Data Management Analyst"
 address: "Atlanta, Georgia"
 # profilepic: "./img/me.jpg"
 phone: 937 750 3516
