@@ -140,12 +140,10 @@ for (group in skills_formatted$group) {
 ```
 
 
-# Select Publications
+# Publications
 
 ```{r publications}
 publications <- bibliography_entries(paste0(in_path,"publications.bib"))%>% arrange(desc(issued))
 
 publications
 ```
-
-Full list of `r publications %>% summarize(N = n()) %>% pull(N)` publications: https://scholar.google.com/citations?user=gqYynN8AAAAJ&hl=en

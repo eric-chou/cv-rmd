@@ -5,8 +5,7 @@ group_id,group,skill_sort,skill
 1,Programming,4,SQL
 1,Programming,5,SAS
 1,Programming,6,Stata
-1,Programming,7,Java
-1,Programming,8,JavaScript
+1,Programming,7,JavaScript
 2,Data Visualization,1,Shiny
 2,Data Visualization,2,Power BI
 2,Data Visualization,3,Tableau

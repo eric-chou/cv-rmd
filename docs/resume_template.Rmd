@@ -105,7 +105,7 @@ job.desc.filtered <- job.desc %>%
       job_id == 2 & desc_id %in% c(1,4) ~ F,
       job_id == 3 & desc_id %in% c(NA) ~ F,
       job_id == 4 & desc_id %in% c(5) ~ F,
-      .default = T
+      TRUE ~ T
     )
   ) %>%
   filter(include == T)
@@ -164,10 +164,10 @@ publications %>%
   filter(
     id %in% c(
       'bakshi2023multimodal',
-      'chou2021designing',
-      'birer2020new'
+      'chou2021designing'#,
+      #'birer2020new'
     )
   )
-```
 
-Full list of `r publications %>% summarize(N = n()) %>% pull(N)` publications: https://scholar.google.com/citations?user=gqYynN8AAAAJ&hl=en
+# Full list of `r publications %>% summarize(N = n()) %>% pull(N)` publications: https://scholar.google.com/citations?user=gqYynN8AAAAJ&hl=en
+```
